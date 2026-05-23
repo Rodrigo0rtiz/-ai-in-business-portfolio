@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rodrigo Ortiz Mendoza | AI in Business Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0e0e0d;
+    --off-black: #1a1a18;
+    --magenta: #e8197d;
+    --magenta-dark: #c0146a;
+    --off-white: #f6f4f1;
+    --white: #ffffff;
+    --border: #e0ddd8;
+    --text-body: #3a3a38;
+    --text-muted: #6b6b68;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 400;
+    color: var(--text-body);
+    background: var(--white);
+    line-height: 1.65;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--black);
+    border-bottom: 5px solid var(--magenta);
+    padding: 72px 40px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(232,25,125,0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232,25,125,0.08) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--magenta);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 2px;
+    background: var(--magenta);
+    flex-shrink: 0;
+  }
+
+  .hero h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #ffffff;
+    line-height: 1.0;
+    margin-bottom: 18px;
+  }
+
+  .hero h1 span {
+    color: var(--magenta);
+  }
+
+  .hero-sub {
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 36px;
+  }
+
+  .hero-about {
+    max-width: 680px;
+    font-size: 15px;
+    color: rgba(255,255,255,0.72);
+    line-height: 1.75;
+    border-left: 3px solid var(--magenta);
+    padding-left: 20px;
+  }
+
+  /* ── MAIN ── */
+  .main {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+  }
+
+  /* ── SECTION LABELS ── */
+  .section-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--magenta);
+    padding: 48px 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── PROJECT GRID ── */
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  @media (max-width: 700px) {
+    .project-grid { grid-template-columns: 1fr; }
+    .main { padding: 0 20px 60px; }
+    .hero { padding: 48px 20px 48px; }
+  }
+
+  /* ── PROJECT CARD ── */
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--magenta);
+    padding: 28px 28px 24px;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .card:hover {
+    border-color: var(--magenta);
+    box-shadow: 0 0 0 3px rgba(232,25,125,0.12);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  .card-icon {
+    font-size: 26px;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .card-company {
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--magenta);
+    margin-bottom: 4px;
+  }
+
+  .card-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--off-black);
+    line-height: 1.2;
+  }
+
+  .card-desc {
+    font-size: 14px;
+    color: var(--text-body);
+    line-height: 1.7;
+    margin-bottom: 18px;
+    flex: 1;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+
+  .tag {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+  }
+
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--magenta);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s;
+    width: fit-content;
+  }
+
+  .card-link:hover {
+    border-bottom-color: var(--magenta);
+  }
+
+  .card-link::after {
+    content: '→';
+    font-size: 14px;
+  }
+
+  /* ── TAKEAWAYS ── */
+  .takeaways-wrap {
+    background: var(--off-black);
+    border-top: 4px solid var(--magenta);
+    padding: 40px 40px 44px;
+    margin: 0 -40px;
+  }
+
+  @media (max-width: 700px) {
+    .takeaways-wrap { margin: 0 -20px; padding: 32px 20px 36px; }
+  }
+
+  .takeaways-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--magenta);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .takeaways-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(232,25,125,0.3);
+  }
+
+  .takeaways-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 1000px;
+  }
+
+  @media (max-width: 700px) {
+    .takeaways-grid { grid-template-columns: 1fr; }
+  }
+
+  .takeaway-item {
+    border-left: 2px solid var(--magenta);
+    padding-left: 18px;
+  }
+
+  .takeaway-num {
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: rgba(232,25,125,0.3);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .takeaway-item p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.65;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    border-top: 5px solid var(--magenta);
+    padding: 32px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 4px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-links a:hover { color: var(--magenta); }
+
+  .footer-built {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+  }
+
+  @media (max-width: 700px) {
+    footer { padding: 28px 20px; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Rodrigo Ortiz Mendoza</div>
+    <h1>AI in <span>Business</span><br>Portfolio</h1>
+    <div class="hero-sub">MIS 432 &nbsp;·&nbsp; Western Washington University &nbsp;·&nbsp; College of Business and Economics &nbsp;·&nbsp; Spring 2026</div>
+    <p class="hero-about">Over one quarter in MIS 432, I studied how seven real companies — from a drug discovery startup to Waymo's self-driving program — actually deploy AI at scale. In each lab I built a working analysis, dug into the underlying architecture, and stress-tested my assumptions against what the companies publicly reported. What I kept finding was the same gap: the AI itself is often the easy part. The hard part is the data pipeline, the governance model, and getting people to trust the output enough to act on it.</p>
+  </div>
+</header>
+
+<!-- PROJECTS -->
+<main class="main">
+
+  <div class="section-label">Seven Labs · Seven Companies</div>
+
+  <div class="project-grid">
+
+    <!-- 1: EveryCure -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🧬</div>
+        <div>
+          <div class="card-company">EveryCure</div>
+          <div class="card-title">AI for Drug Repurposing</div>
+        </div>
+      </div>
+      <p class="card-desc">Analyzed how EveryCure uses knowledge graphs and NLP to find new therapeutic uses for FDA-approved drugs — cutting years off the traditional drug discovery timeline. Built a working model of the graph traversal logic and explored how the system surfaces candidate matches that human researchers would miss.</p>
+      <div class="card-tags">
+        <span class="tag">Knowledge Graphs</span>
+        <span class="tag">NLP</span>
+        <span class="tag">Drug Discovery</span>
+        <span class="tag">Graph Traversal</span>
+      </div>
+      <a class="card-link" href="https://rodrigo0rtiz.github.io/everycure-drug-repurposing-system/" target="_blank">View Project</a>
+    </div>
+
+    <!-- 2: Netflix -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🎬</div>
+        <div>
+          <div class="card-company">Netflix</div>
+          <div class="card-title">A/B Testing & Experimentation</div>
+        </div>
+      </div>
+      <p class="card-desc">Investigated how Netflix runs thousands of simultaneous A/B tests to optimize thumbnail artwork, UI layouts, and recommendation surfaces — and how statistical rigor at this scale requires automated guardrails to avoid false positives. Learned why the business value of experimentation comes from organizational culture, not just the testing framework.</p>
+      <div class="card-tags">
+        <span class="tag">A/B Testing</span>
+        <span class="tag">Experimentation</span>
+        <span class="tag">Statistical Significance</span>
+        <span class="tag">Personalization</span>
+      </div>
+      <a class="card-link" href="https://rodrigo0rtiz.github.io/-The-Netflix-Artwork-Problem-and-A-B-Testing/" target="_blank">View Project</a>
+    </div>
+
+    <!-- 3: Spotify -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🎵</div>
+        <div>
+          <div class="card-company">Spotify</div>
+          <div class="card-title">Recommendation Systems & Personalization</div>
+        </div>
+      </div>
+      <p class="card-desc">Mapped the architecture behind Spotify's Discover Weekly — collaborative filtering, content-based signals, and the cold-start problem for new artists. Built an analysis of how Spotify balances personalization against serendipity, and why over-optimization for past behavior can trap listeners in a filter bubble.</p>
+      <div class="card-tags">
+        <span class="tag">Recommendation Systems</span>
+        <span class="tag">Collaborative Filtering</span>
+        <span class="tag">Cold Start Problem</span>
+        <span class="tag">Personalization</span>
+      </div>
+      <a class="card-link" href="https://rodrigo0rtiz.github.io/spotify-recommendation-lab/" target="_blank">View Project</a>
+    </div>
+
+    <!-- 4: Uber -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🚗</div>
+        <div>
+          <div class="card-company">Uber</div>
+          <div class="card-title">Forecasting & Dynamic Pricing</div>
+        </div>
+      </div>
+      <p class="card-desc">Examined how Uber's demand forecasting models power surge pricing — and why the same ML infrastructure that optimizes revenue also shapes driver earnings and passenger fairness. Analyzed the ethical tradeoffs embedded in algorithmic pricing decisions and what transparency means in a two-sided marketplace.</p>
+      <div class="card-tags">
+        <span class="tag">Dynamic Pricing</span>
+        <span class="tag">Demand Forecasting</span>
+        <span class="tag">Reinforcement Learning</span>
+        <span class="tag">Marketplace AI</span>
+      </div>
+      <a class="card-link" href="https://rodrigo0rtiz.github.io/uber-ai-lab/" target="_blank">View Project</a>
+    </div>
+
+    <!-- 5: Waymo -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🤖</div>
+        <div>
+          <div class="card-company">Waymo</div>
+          <div class="card-title">Deep Learning & Computer Vision</div>
+        </div>
+      </div>
+      <p class="card-desc">Dug into Waymo's sensor fusion pipeline — how LiDAR, radar, and camera inputs are combined by deep learning models to produce a real-time 3D world model. Explored why autonomous driving is as much a data labeling and edge-case problem as a model architecture problem, and how Waymo's simulation infrastructure accelerates training.</p>
+      <div class="card-tags">
+        <span class="tag">Computer Vision</span>
+        <span class="tag">Deep Learning</span>
+        <span class="tag">Sensor Fusion</span>
+        <span class="tag">LiDAR</span>
+        <span class="tag">Simulation</span>
+      </div>
+      <a class="card-link" href="https://rodrigo0rtiz.github.io/waymo_lab/" target="_blank">View Project</a>
+    </div>
+
+    <!-- 6: Airbnb -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🏠</div>
+        <div>
+          <div class="card-company">Airbnb</div>
+          <div class="card-title">Marketplace AI & Dynamic Pricing</div>
+        </div>
+      </div>
+      <p class="card-desc">Analyzed Airbnb's Smart Pricing tool and the trust-and-safety models that screen listings, flag fraud, and rank search results. Explored how Airbnb's AI systems serve three different stakeholders simultaneously — guests, hosts, and Airbnb itself — and how those competing objectives get encoded into a single pricing algorithm.</p>
+      <div class="card-tags">
+        <span class="tag">Dynamic Pricing</span>
+        <span class="tag">Trust & Safety</span>
+        <span class="tag">Marketplace AI</span>
+        <span class="tag">Search Ranking</span>
+      </div>
+      <a class="card-link" href="https://github.com/Rodrigo0rtiz/Analyze-Airbnb-s-AI-Systems-From-the-Inside" target="_blank">View Project</a>
+    </div>
+
+    <!-- 7: Epic / Agentic AI -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🏥</div>
+        <div>
+          <div class="card-company">Epic Healthcare</div>
+          <div class="card-title">Agentic AI & Insurance Advocacy</div>
+        </div>
+      </div>
+      <p class="card-desc">Built two autonomous AI agents in n8n: an Insurance Advocate that drafts appeal letters for wrongly denied claims using patient chart data and policy lookups, and a personal concert planner that balances schedule, budget, and event data. Stress-tested what happens when a tool fails mid-task — and why anti-hallucination guardrails matter more than model capability in high-stakes workflows.</p>
+      <div class="card-tags">
+        <span class="tag">Agentic AI</span>
+        <span class="tag">n8n</span>
+        <span class="tag">Tool Use</span>
+        <span class="tag">AI Governance</span>
+        <span class="tag">Healthcare AI</span>
+      </div>
+      <a class="card-link" href="https://rodrigo0rtiz.github.io/agentic-ai-lab/" target="_blank">View Project</a>
+    </div>
+
+  </div><!-- /project-grid -->
+
+  <!-- TAKEAWAYS -->
+  <div class="section-label" style="padding-top: 56px;">Key Takeaways</div>
+  <div class="takeaways-wrap">
+    <div class="takeaways-label">What I learned across seven labs</div>
+    <div class="takeaways-grid">
+      <div class="takeaway-item">
+        <div class="takeaway-num">01</div>
+        <p>AI is only as good as its data pipeline. Every company I studied spent more engineering time on data quality, labeling, and freshness than on the model itself. The model is often the cheapest part.</p>
+      </div>
+      <div class="takeaway-item">
+        <div class="takeaway-num">02</div>
+        <p>Business value comes from workflow integration, not model accuracy. A 95% accurate model no one trusts or uses delivers zero value. Adoption, explainability, and human-in-the-loop design matter as much as benchmarks.</p>
+      </div>
+      <div class="takeaway-item">
+        <div class="takeaway-num">03</div>
+        <p>Every AI system embeds values, whether intentional or not. Uber's surge pricing, Airbnb's search ranking, and Spotify's recommendations all reflect tradeoff decisions that affect real people — and those decisions deserve governance frameworks, not just engineering solutions.</p>
+      </div>
+      <div class="takeaway-item">
+        <div class="takeaway-num">04</div>
+        <p>Agents that say "I don't know" are more valuable than agents that guess. The most important design decision in the Insurance Advocate lab wasn't the model — it was the instruction to disclose uncertainty rather than hallucinate a policy citation.</p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-name">Rodrigo Ortiz Mendoza</div>
+    <div class="footer-links">
+      <a href="mailto:ortizmr@wwu.edu">ortizmr@wwu.edu</a>
+      <a href="https://www.linkedin.com/in/rortizmendoza/" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+  <div class="footer-built">Built with Claude &nbsp;·&nbsp; MIS 432 &nbsp;·&nbsp; AI in Business</div>
+</footer>
+
+</body>
+</html>
